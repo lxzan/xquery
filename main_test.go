@@ -26,18 +26,9 @@ func TestMatch(t *testing.T) {
 	</dd>
 </dl>`
 
-
 	var tree = Load(html)
-	//var node = tree.children[0].children
-	tree.Select("dt")
-	//<dt><a href="/forums/CloudComputing">云计算</a></dt> <dd> 	<a href="/forums/AWS">IaaS</a> 	<a hre
-
-	//child,err := MatchChild(`<dd>
-	//	<a href="/forums/AWS">IaaS</a>
-	//	<a href="/forums/CloudFoundry">Pass/SaaS</a>
-	//	<a href="/forums/hadoop">分布式计算/Hadoop</a>
-	//</dd>`)
-	//println(&child, err.Error())
+	nodes := tree.Select("dd a")
+	println(&nodes)
 }
 
 func TestWhile(t *testing.T) {
@@ -49,7 +40,7 @@ func TestWhile(t *testing.T) {
 	})
 }
 
-func TestSubstr(t *testing.T)  {
+func TestSubstr(t *testing.T) {
 	var s = "lxz 520"
 	son := Substr(s, 1, 2)
 	println(son)

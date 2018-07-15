@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2d2de3b-e6bb-40b9-98d7-1dc16e00d0de" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/main_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser.go" beforeDir="false" afterPath="$PROJECT_DIR$/parser.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util.go" beforeDir="false" afterPath="$PROJECT_DIR$/util.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,8 +19,8 @@
           <file leaf-file-name="main_test.go" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/main_test.go">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="308">
-                  <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+                <state relative-caret-position="313">
+                  <caret line="30" selection-start-line="30" selection-end-line="30" />
                 </state>
               </provider>
             </entry>
@@ -31,12 +28,10 @@
           <file leaf-file-name="parser.go" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/parser.go">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="249">
-                  <caret line="81" column="25" selection-start-line="81" selection-start-column="25" selection-end-line="81" selection-end-column="25" />
+                <state relative-caret-position="1200">
+                  <caret line="155" selection-start-line="155" selection-end-line="155" />
                   <folding>
-                    <element signature="e#16#92#0" expanded="true" />
-                    <element signature="e#1987#2480#0" />
-                    <element signature="e#2689#3038#0" />
+                    <element signature="e#16#99#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -45,8 +40,8 @@
           <file leaf-file-name="util.go" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/util.go">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="345">
-                  <caret line="58" column="9" lean-forward="true" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
+                <state relative-caret-position="175">
+                  <caret line="87" selection-start-line="87" selection-end-line="87" />
                   <folding>
                     <element signature="e#16#47#0" expanded="true" />
                   </folding>
@@ -70,8 +65,8 @@
           <file leaf-file-name="main_test.go" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/main_test.go">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="308">
-                  <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+                <state relative-caret-position="285">
+                  <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
                 </state>
               </provider>
             </entry>
@@ -80,6 +75,11 @@
       </split-second>
     </splitter>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>prin</find>
+    </findStrings>
+  </component>
   <component name="GOROOT" path="/usr/local/go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -87,11 +87,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/match.go" />
         <option value="$PROJECT_DIR$/util.go" />
-        <option value="$PROJECT_DIR$/main_test.go" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/parser.go" />
+        <option value="$PROJECT_DIR$/main_test.go" />
       </list>
     </option>
   </component>
@@ -181,40 +181,39 @@
     </recent_temporary>
   </component>
   <component name="TestHistory">
-    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.15 at 22h 36m 45s.xml">
+    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.15 at 23h 15m 21s.xml">
       <configuration name="TestMatch in github.com/lxzan/xquery" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.15 at 22h 37m 35s.xml">
+    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.15 at 23h 16m 01s.xml">
       <configuration name="TestMatch in github.com/lxzan/xquery" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.15 at 22h 38m 01s.xml">
+    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.15 at 23h 16m 28s.xml">
       <configuration name="TestMatch in github.com/lxzan/xquery" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.15 at 22h 38m 23s.xml">
+    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.15 at 23h 16m 33s.xml">
       <configuration name="TestMatch in github.com/lxzan/xquery" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.15 at 22h 40m 13s.xml">
+    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.15 at 23h 16m 54s.xml">
       <configuration name="TestMatch in github.com/lxzan/xquery" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.15 at 22h 41m 40s.xml">
+    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.15 at 23h 16m 59s.xml">
       <configuration name="TestMatch in github.com/lxzan/xquery" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.15 at 22h 41m 53s.xml">
+    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.15 at 23h 17m 17s.xml">
       <configuration name="TestMatch in github.com/lxzan/xquery" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.15 at 22h 44m 02s.xml">
+    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.15 at 23h 17m 39s.xml">
       <configuration name="TestMatch in github.com/lxzan/xquery" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.15 at 22h 45m 04s.xml">
+    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.15 at 23h 18m 52s.xml">
       <configuration name="TestMatch in github.com/lxzan/xquery" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.15 at 22h 45m 36s.xml">
+    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.15 at 23h 19m 47s.xml">
       <configuration name="TestMatch in github.com/lxzan/xquery" configurationId="GoTestRunConfiguration" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.24964234" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -247,59 +246,22 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/parser.go</url>
-          <line>221</line>
+          <url>file://$PROJECT_DIR$/main_test.go</url>
+          <line>30</line>
           <properties />
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/parser.go</url>
-          <line>207</line>
-          <properties />
-          <option name="timeStamp" value="20" />
+          <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/parser.go</url>
           <line>152</line>
           <properties />
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/parser.go</url>
-          <line>216</line>
-          <properties />
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/parser.go</url>
-          <line>95</line>
-          <properties />
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/parser.go</url>
-          <line>162</line>
-          <properties />
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/parser.go</url>
-          <line>93</line>
-          <properties />
-          <option name="timeStamp" value="30" />
+          <option name="timeStamp" value="43" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="31" />
+      <option name="time" value="44" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../../sourcecode_bbs_go/library/stringi/stringi.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="37">
@@ -311,20 +273,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/go/src/testing/testing.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="727" selection-start-line="727" selection-end-line="727" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/go/src/runtime/panic.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="587" selection-start-line="587" selection-end-line="587" />
         </state>
       </provider>
     </entry>
@@ -342,34 +290,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../../emirpasic/gods/lists/singlylinkedlist/enumerable.go">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/go/src/runtime/panic.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="587" selection-start-line="587" selection-end-line="587" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/util.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="58" column="9" lean-forward="true" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
+        <state relative-caret-position="175">
+          <caret line="87" selection-start-line="87" selection-end-line="87" />
           <folding>
             <element signature="e#16#47#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_test.go">
+    <entry file="file:///usr/local/go/src/testing/testing.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+        <state relative-caret-position="165">
+          <caret line="727" selection-start-line="727" selection-end-line="727" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../emirpasic/gods/lists/singlylinkedlist/enumerable.go">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/main_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/parser.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="81" column="25" selection-start-line="81" selection-start-column="25" selection-end-line="81" selection-end-column="25" />
+        <state relative-caret-position="1200">
+          <caret line="155" selection-start-line="155" selection-end-line="155" />
           <folding>
-            <element signature="e#16#92#0" expanded="true" />
-            <element signature="e#1987#2480#0" />
-            <element signature="e#2689#3038#0" />
+            <element signature="e#16#99#0" expanded="true" />
           </folding>
         </state>
       </provider>

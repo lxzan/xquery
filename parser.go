@@ -1,9 +1,9 @@
 package parser
 
 import (
+	"github.com/emirpasic/gods/stacks/linkedliststack"
 	"regexp"
 	"strings"
-	"github.com/emirpasic/gods/stacks/linkedliststack"
 )
 
 var boolAttrs = Switch{
@@ -71,7 +71,7 @@ func (u *Node) InnterHtml() string {
 	return strings.TrimSpace(s)
 }
 
-func (u *Node) Select(selector string) []*Node{
+func (u *Node) Select(selector string) []*Node {
 	var res = make([]*Node, 0)
 	var arr = strings.Split(selector, " ")
 	type Q struct {
@@ -98,15 +98,24 @@ func (u *Node) Select(selector string) []*Node{
 				var id = re.FindString(patt)
 				id = strings.Replace(id, "#", "", 1)
 				if v.N.id == id {
-					flag ++
+					flag++
 					patt = strings.Replace(patt, "#"+id, "", 1)
-					if patt == "" {
+					if patt == "" && len(v.A) == 1 {
 						a := make([]string, len(v.A)-1)
 						copy(a, v.A[1:len(v.A)])
 						q.Push(Q{
 							N: v.N,
 							A: a,
 						})
+					} else if patt == "" && len(v.A) > 1 {
+						a := make([]string, len(v.A)-1)
+						copy(a, v.A[1:len(v.A)])
+						for _, son := range v.N.children {
+							q.Push(Q{
+								N: son,
+								A: a,
+							})
+						}
 					} else {
 						a := make([]string, len(v.A))
 						copy(a, v.A)
@@ -123,15 +132,24 @@ func (u *Node) Select(selector string) []*Node{
 				myclass = strings.Replace(myclass, ".", "", 1)
 
 				if InArray(v.N.classes, myclass) == true {
-					flag ++
+					flag++
 					patt = strings.Replace(patt, "."+myclass, "", 1)
-					if patt == "" {
+					if patt == "" && len(v.A) == 1 {
 						a := make([]string, len(v.A)-1)
 						copy(a, v.A[1:len(v.A)])
 						q.Push(Q{
 							N: v.N,
 							A: a,
 						})
+					} else if patt == "" && len(v.A) > 1 {
+						a := make([]string, len(v.A)-1)
+						copy(a, v.A[1:len(v.A)])
+						for _, son := range v.N.children {
+							q.Push(Q{
+								N: son,
+								A: a,
+							})
+						}
 					} else {
 						a := make([]string, len(v.A))
 						copy(a, v.A)
@@ -148,15 +166,24 @@ func (u *Node) Select(selector string) []*Node{
 				tagName = strings.Replace(tagName, ".", "", 1)
 
 				if v.N.tagName == tagName {
-					flag ++
+					flag++
 					patt = strings.Replace(patt, tagName, "", 1)
-					if patt == "" {
+					if patt == "" && len(v.A) == 1 {
 						a := make([]string, len(v.A)-1)
 						copy(a, v.A[1:len(v.A)])
 						q.Push(Q{
 							N: v.N,
 							A: a,
 						})
+					} else if patt == "" && len(v.A) > 1 {
+						a := make([]string, len(v.A)-1)
+						copy(a, v.A[1:len(v.A)])
+						for _, son := range v.N.children {
+							q.Push(Q{
+								N: son,
+								A: a,
+							})
+						}
 					} else {
 						a := make([]string, len(v.A))
 						copy(a, v.A)
@@ -178,15 +205,24 @@ func (u *Node) Select(selector string) []*Node{
 				re, _ = regexp.Compile(`['"]`)
 				var val = re.ReplaceAllString(kv[1], "")
 				if v.N.attrs[k].String() == val {
-					flag ++
+					flag++
 					patt = strings.Replace(patt, cp, "", 1)
-					if patt == "" {
+					if patt == "" && len(v.A) == 1 {
 						a := make([]string, len(v.A)-1)
 						copy(a, v.A[1:len(v.A)])
 						q.Push(Q{
 							N: v.N,
 							A: a,
 						})
+					} else if patt == "" && len(v.A) > 1 {
+						a := make([]string, len(v.A)-1)
+						copy(a, v.A[1:len(v.A)])
+						for _, son := range v.N.children {
+							q.Push(Q{
+								N: son,
+								A: a,
+							})
+						}
 					} else {
 						a := make([]string, len(v.A))
 						copy(a, v.A)
@@ -199,11 +235,11 @@ func (u *Node) Select(selector string) []*Node{
 				}
 			}
 
-			if flag == 0{
-				for _,son := range v.N.children{
+			if flag == 0 {
+				for _, son := range v.N.children {
 					q.Push(Q{
-						N:son,
-						A:arr,
+						N: son,
+						A: arr,
 					})
 				}
 			}
@@ -211,4 +247,13 @@ func (u *Node) Select(selector string) []*Node{
 		return q.Size() > 0
 	})
 	return res
+}
+
+func (u *Node) Attr(key string) string {
+	return u.attrs[key].String()
+}
+
+func (u *Node) Text() string {
+	re, _ := regexp.Compile("<.*?>")
+	return strings.TrimSpace(re.ReplaceAllString(u.html, ""))
 }

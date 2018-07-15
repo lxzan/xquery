@@ -14,18 +14,22 @@ func TestParserLoad(t *testing.T) {
 
 func TestMatch(t *testing.T) {
 	html := `
-<dl>
+<dl id="cloud" name="caster">
 	<dt>
-		<a href="/forums/CloudComputing">Cloud Calculate</a>
+		<a href="/forums/CloudComputing">云计算</a>
 	</dt>
+
 	<dd>
-		<a href="/forums/AWS">IaaS</a>
-		<a href="/forums/CloudFoundry">Pass/SaaS</a>
-		<a href="/forums/hadoop">Cluster Calculate/Hadoop</a>
+	<a href="/forums/AWS">IaaS</a>
+	<a href="/forums/CloudFoundry">Pass/SaaS</a>
+	<a href="/forums/hadoop">Cluster Calculate/Hadoop</a>
 	</dd>
 </dl>`
+
+
 	var tree = Load(html)
-	println(&tree)
+	//var node = tree.children[0].children
+	tree.Select("dt")
 	//<dt><a href="/forums/CloudComputing">云计算</a></dt> <dd> 	<a href="/forums/AWS">IaaS</a> 	<a hre
 
 	//child,err := MatchChild(`<dd>
@@ -43,4 +47,10 @@ func TestWhile(t *testing.T) {
 		println(i)
 		return i < 10
 	})
+}
+
+func TestSubstr(t *testing.T)  {
+	var s = "lxz 520"
+	son := Substr(s, 1, 2)
+	println(son)
 }

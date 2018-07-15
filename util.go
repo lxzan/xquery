@@ -31,7 +31,7 @@ func getTagName(html string) string {
 }
 
 // 获取root标签id, class以及其他属性
-func getAttrs(tagName string, html string) (string, []string, *Attrs) {
+func getAttrs(tagName string, html string) (string, []string, Attrs) {
 	var id = ""
 	var classes = make([]string, 0)
 	var attrs = Attrs{}
@@ -45,7 +45,7 @@ func getAttrs(tagName string, html string) (string, []string, *Attrs) {
 	s = strings.TrimSpace(re.ReplaceAllString(s, " "))
 	var arr = strings.Split(s, " ")
 	if len(arr) == 1 && arr[0] == "" {
-		return id, classes, &attrs
+		return id, classes, attrs
 	}
 
 	for _, item := range arr {
@@ -68,7 +68,7 @@ func getAttrs(tagName string, html string) (string, []string, *Attrs) {
 			attrs[k] = v
 		}
 	}
-	return id, classes, &attrs
+	return id, classes, attrs
 }
 
 func InnterHtml(html string) string{
@@ -89,19 +89,17 @@ func DoWhile(fn func() bool)  {
 	}
 }
 
-func Substr(s string, start, length int) string {
-	bt := []rune(s)
-	if start < 0 {
-		start = 0
+func Substr(s string, start, length int) string  {
+	bytes := []byte(s)
+	tmp := bytes[start:start+length]
+	return string(tmp)
+}
+
+func InArray(arr []string, ele string) bool {
+	for _, item := range arr {
+		if item == ele {
+			return true
+		}
 	}
-	if start > len(bt) {
-		start = start % len(bt)
-	}
-	var end int
-	if (start + length) > (len(bt) - 1) {
-		end = len(bt)
-	} else {
-		end = start + length
-	}
-	return string(bt[start:end])
+	return false
 }

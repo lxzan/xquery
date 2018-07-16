@@ -3,6 +3,7 @@ package parser
 import (
 	"errors"
 	"strings"
+	"regexp"
 )
 
 // 匹配标签对
@@ -12,6 +13,11 @@ func MatchChild(html string) (string, error) {
 	var tagName = getTagName(childs)
 	var startTag = "<" + tagName
 	var endTag = "</" + tagName + ">"
+	if InArray(singleTags, tagName) {
+		patt := Build("<{{tagName}}.*?>", Form{"tagName": tagName})
+		re, _ := regexp.Compile(patt)
+		return re.FindString(html), nil
+	}
 
 	var a = 0
 	var b = 0
@@ -31,7 +37,7 @@ func MatchChild(html string) (string, error) {
 	var endIndex = -1
 
 	DoWhile(func() bool {
-		if a == b && a != 0{
+		if a == b && a != 0 {
 			return a != b
 		}
 
@@ -47,7 +53,7 @@ func MatchChild(html string) (string, error) {
 			childs = strings.Replace(childs, startTag, sa, 1)
 		}
 
-		if a == b && a != 0{
+		if a == b && a != 0 {
 			endIndex = j
 		}
 		return a != b

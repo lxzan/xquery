@@ -17,6 +17,7 @@ func TestMatch(t *testing.T) {
 <dl id="cloud" name="caster">
 	<dt>
 		<a href="/forums/CloudComputing">云计算</a>
+		<img src="https://baidu.com/">
 	</dt>
 
 	<dd>
@@ -27,8 +28,8 @@ func TestMatch(t *testing.T) {
 </dl>`
 
 	var tree = Load(html)
-	nodes := tree.Select("dd a")
-	println(&nodes)
+	nodes := tree.Select("dl dt img")
+	println(nodes[0].Attr("src"))
 }
 
 func TestWhile(t *testing.T) {

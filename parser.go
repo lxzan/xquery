@@ -6,6 +6,7 @@ import (
 	"strings"
 )
 
+// 允许省略值得属性
 var boolAttrs = Switch{
 	"autofocus": true,
 	"autoplay":  true,
@@ -24,10 +25,18 @@ var boolAttrs = Switch{
 	"selected":  true,
 }
 
+// 非闭合标签
+var singleTags = []string{"img", "input", "hr", "br", "link", "meta", "source"}
+
 func Load(html string) *Node {
 	html = strings.Replace(html, "\n\t", " ", -1)
 	html = strings.Replace(html, "\n", " ", -1)
 	html = strings.TrimSpace(html)
+	for _,item := range singleTags{
+		tag := "</" + item + ">"
+		html = strings.Replace(html, tag, "", -1)
+	}
+
 	var obj = new(Node)
 	obj.attrs = Attrs{}
 	obj.classes = []string{}

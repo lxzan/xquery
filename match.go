@@ -13,8 +13,8 @@ func MatchChild(html string) (string, error) {
 	var tagName = getTagName(childs)
 	var startTag = "<" + tagName
 	var endTag = "</" + tagName + ">"
-	if InArray(singleTags, tagName) {
-		patt := Build("<{{tagName}}.*?>", Form{"tagName": tagName})
+	if InArray(singleTags, strings.ToLower(tagName)) {
+		patt := Build("(?imU:<{{tagName}}.*>)", Form{"tagName": tagName})
 		re, _ := regexp.Compile(patt)
 		return re.FindString(html), nil
 	}
@@ -36,9 +36,9 @@ func MatchChild(html string) (string, error) {
 	}
 	var endIndex = -1
 
-	DoWhile(func() bool {
+	for {
 		if a == b && a != 0 {
-			return a != b
+			break
 		}
 
 		var j = strings.Index(childs, endTag)
@@ -56,8 +56,11 @@ func MatchChild(html string) (string, error) {
 		if a == b && a != 0 {
 			endIndex = j
 		}
-		return a != b
-	})
+
+		if a == b {
+			break
+		}
+	}
 
 	if a == 0 {
 		return "", errors.New("no match")

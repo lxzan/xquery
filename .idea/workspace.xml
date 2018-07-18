@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2d2de3b-e6bb-40b9-98d7-1dc16e00d0de" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/main_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/match.go" beforeDir="false" afterPath="$PROJECT_DIR$/match.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parser.go" beforeDir="false" afterPath="$PROJECT_DIR$/parser.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/util.go" beforeDir="false" afterPath="$PROJECT_DIR$/util.go" afterDir="false" />
     </list>
@@ -19,8 +19,8 @@
       <file leaf-file-name="demo.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/demo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="51" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="51" />
+            <state relative-caret-position="200">
+              <caret line="894" column="5" selection-start-line="894" selection-start-column="5" selection-end-line="894" selection-end-column="13" />
               <folding>
                 <element signature="e#309#314#0#HTML" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#a#1;n#div#0;n#div#0;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -142,8 +142,8 @@
       <file leaf-file-name="main_test.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="16" column="9" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+            <state relative-caret-position="306">
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
             </state>
           </provider>
         </entry>
@@ -151,8 +151,8 @@
       <file leaf-file-name="parser.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parser.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="58" column="34" lean-forward="true" selection-start-line="58" selection-start-column="34" selection-end-line="58" selection-end-column="34" />
+            <state relative-caret-position="299">
+              <caret line="68" column="29" selection-start-line="68" selection-start-column="29" selection-end-line="68" selection-end-column="29" />
               <folding>
                 <element signature="e#16#99#0" expanded="true" />
               </folding>
@@ -160,11 +160,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="util.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="util.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/util.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="48" column="31" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
+            <state relative-caret-position="294">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
               <folding>
                 <element signature="e#16#47#0" expanded="true" />
               </folding>
@@ -172,11 +172,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="match.go" pinned="false" current-in-tab="false">
+      <file leaf-file-name="match.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/match.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+            <state relative-caret-position="289">
+              <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
               <folding>
                 <element signature="e#16#57#0" expanded="true" />
               </folding>
@@ -190,6 +190,9 @@
     <findStrings>
       <find>prin</find>
       <find>&lt;/</find>
+      <find>DoWhile</find>
+      <find>&lt;span class=&quot;clearfix&quot;&gt;&lt;/span&gt;</find>
+      <find>singleTags</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -203,11 +206,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/match.go" />
         <option value="$PROJECT_DIR$/test/demo.html" />
+        <option value="$PROJECT_DIR$/util.go" />
         <option value="$PROJECT_DIR$/main_test.go" />
         <option value="$PROJECT_DIR$/parser.go" />
-        <option value="$PROJECT_DIR$/util.go" />
+        <option value="$PROJECT_DIR$/match.go" />
       </list>
     </option>
   </component>
@@ -302,34 +305,34 @@
     </recent_temporary>
   </component>
   <component name="TestHistory">
-    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.18 at 10h 24m 44s.xml">
+    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.18 at 11h 40m 49s.xml">
       <configuration name="TestMatch in github.com/lxzan/xquery" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.18 at 10h 25m 10s.xml">
+    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.18 at 11h 42m 20s.xml">
       <configuration name="TestMatch in github.com/lxzan/xquery" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.18 at 10h 25m 18s.xml">
+    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.18 at 11h 42m 34s.xml">
       <configuration name="TestMatch in github.com/lxzan/xquery" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.18 at 10h 25m 26s.xml">
+    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.18 at 11h 43m 30s.xml">
       <configuration name="TestMatch in github.com/lxzan/xquery" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.18 at 10h 25m 36s.xml">
+    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.18 at 11h 43m 47s.xml">
       <configuration name="TestMatch in github.com/lxzan/xquery" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.18 at 10h 25m 46s.xml">
+    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.18 at 11h 47m 53s.xml">
       <configuration name="TestMatch in github.com/lxzan/xquery" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.18 at 10h 26m 51s.xml">
+    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.18 at 11h 48m 16s.xml">
       <configuration name="TestMatch in github.com/lxzan/xquery" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.18 at 10h 27m 27s.xml">
+    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.18 at 11h 48m 47s.xml">
       <configuration name="TestMatch in github.com/lxzan/xquery" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.18 at 10h 30m 35s.xml">
+    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.18 at 11h 49m 19s.xml">
       <configuration name="TestMatch in github.com/lxzan/xquery" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.18 at 10h 30m 43s.xml">
+    <history-entry file="TestMatch_in_github_com_lxzan_xquery - 2018.07.18 at 11h 49m 41s.xml">
       <configuration name="TestMatch in github.com/lxzan/xquery" configurationId="GoTestRunConfiguration" />
     </history-entry>
   </component>
@@ -337,25 +340,25 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25679544" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32969698" />
+      <window_info anchor="bottom" id="Code comment" order="7" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25679544" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.34666666" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Code comment" order="7" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -369,12 +372,24 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/main_test.go</url>
-          <line>19</line>
+          <line>21</line>
           <properties />
           <option name="timeStamp" value="50" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/parser.go</url>
+          <line>69</line>
+          <properties />
+          <option name="timeStamp" value="93" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/match.go</url>
+          <line>11</line>
+          <properties />
+          <option name="timeStamp" value="94" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="68" />
+      <option name="time" value="95" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -487,13 +502,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/go/src/regexp/regexp.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="747" column="18" selection-start-line="747" selection-start-column="18" selection-end-line="747" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/go/src/builtin/builtin.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
@@ -501,10 +509,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/local/go/src/regexp/regexp.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="1018" column="18" selection-start-line="1018" selection-start-column="18" selection-end-line="1018" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/go/src/runtime/panic.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="598" column="6" lean-forward="true" selection-start-line="598" selection-start-column="6" selection-end-line="598" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/demo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="51" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="51" />
+        <state relative-caret-position="200">
+          <caret line="894" column="5" selection-start-line="894" selection-start-column="5" selection-end-line="894" selection-end-column="13" />
           <folding>
             <element signature="e#309#314#0#HTML" expanded="true" />
             <element signature="n#style#0;n#img#0;n#a#1;n#div#0;n#div#0;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -622,46 +644,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_test.go">
+    <entry file="file://$PROJECT_DIR$/util.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="16" column="9" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+        <state relative-caret-position="294">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
           <folding>
-            <element signature="e#16#57#0" expanded="true" />
+            <element signature="e#16#47#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/parser.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="58" column="34" lean-forward="true" selection-start-line="58" selection-start-column="34" selection-end-line="58" selection-end-column="34" />
+        <state relative-caret-position="299">
+          <caret line="68" column="29" selection-start-line="68" selection-start-column="29" selection-end-line="68" selection-end-column="29" />
           <folding>
             <element signature="e#16#99#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/go/src/runtime/panic.go">
+    <entry file="file://$PROJECT_DIR$/main_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="587" selection-start-line="587" selection-end-line="587" />
+        <state relative-caret-position="306">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/util.go">
+    <entry file="file://$PROJECT_DIR$/match.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="48" column="31" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
+        <state relative-caret-position="289">
+          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
           <folding>
-            <element signature="e#16#47#0" expanded="true" />
+            <element signature="e#16#57#0" expanded="true" />
           </folding>
         </state>
       </provider>

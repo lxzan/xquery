@@ -24,9 +24,12 @@ func FilteSlashes(s string) string {
 // 获取root标签名
 func getTagName(html string) string {
 	// 解析标签名
-	re, _ := regexp.Compile("(?i:<[0-9a-z]+)")
-	var tag = re.FindString(html)
-	tag = strings.Replace(tag, "<", "", 1)
+	re, _ := regexp.Compile(`(?imU:<[\S]+.*>)`)
+	var s = re.FindString(html)
+	s = strings.Replace(s, "<", "", 1)
+	s = strings.Replace(s, ">", "", 1)
+	re, _ = regexp.Compile(`(?i:[\S]+)`)
+	var tag = re.FindString(s)
 	return tag
 }
 

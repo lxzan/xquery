@@ -15,19 +15,11 @@ func TestParserLoad(t *testing.T) {
 
 func TestMatch(t *testing.T) {
 	bytes,_ := ioutil.ReadFile("./test/demo.html")
-	nodes := Load(string(bytes))
-	//nodes := Load(`<meta name="author" content="slene, Unknown" />`)
+	println(&bytes)
+	nodes := Load(string(bytes)).Select("#wrapper .sr-only")
+	//nodes := Load(`<gcse:search></gcse:search>`)
 		//Select("#wrapper .sr-only")
 	println(&nodes)
-}
-
-func TestWhile(t *testing.T) {
-	var i = 0
-	DoWhile(func() bool {
-		i++
-		println(i)
-		return i < 10
-	})
 }
 
 func TestSubstr(t *testing.T) {

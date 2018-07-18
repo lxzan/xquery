@@ -26,22 +26,25 @@ var boolAttrs = Switch{
 }
 
 // 非闭合标签
-var singleTags = []string{"img", "input", "hr", "br", "link", "meta", "source"}
+var singleTags = []string{"img", "input", "hr", "br", "link", "meta", "source", "!doctype"}
 
 func Load(html string) *Node {
 	html = strings.Replace(html, "\n\t", " ", -1)
 	html = strings.Replace(html, "\n", " ", -1)
 	html = strings.TrimSpace(html)
 	for _, item := range singleTags {
-		tag := "</" + item + ">"
+		tag := strings.ToLower("</" + item + ">")
+		html = strings.Replace(html, tag, "", -1)
+		tag = strings.ToUpper("</" + item + ">")
 		html = strings.Replace(html, tag, "", -1)
 	}
 	var obj = new(Node)
 	obj.attrs = Attrs{}
 	obj.classes = []string{}
-	re, _ := regexp.Compile(`(?i:^<!DOCTYPE html.*?>)`)
-	html = strings.TrimSpace(re.ReplaceAllString(html, ""))
-	return obj.build(html)
+	re, _ := regexp.Compile(`(?im:<!--.*?-->)`)
+	html = "<root>" + strings.TrimSpace(re.ReplaceAllString(html, "")) + "</root>"
+	obj.build(html)
+	return obj
 }
 
 type Node struct {
@@ -64,7 +67,7 @@ func (u *Node) build(html string) *Node {
 			break
 		}
 		child, err := MatchChild(cp)
-		if err == nil {
+		if err == nil && child != "" {
 			cp = strings.TrimSpace(strings.Replace(cp, child, "", 1))
 			u.children = append(u.children, u.build(child))
 		} else {
@@ -99,7 +102,7 @@ func (u *Node) Select(selector string) []*Node {
 	}
 	q.Push(v)
 
-	DoWhile(func() bool {
+	for q.Size() > 0 {
 		var flag = 0
 		i, _ := q.Pop()
 		v = i.(Q)
@@ -258,8 +261,7 @@ func (u *Node) Select(selector string) []*Node {
 				}
 			}
 		}
-		return q.Size() > 0
-	})
+	}
 	return res
 }
 

@@ -1,7 +1,7 @@
 package parser
 
 import (
-	"github.com/emirpasic/gods/stacks/linkedliststack"
+	"github.com/emirpasic/gods/lists/arraylist"
 	"regexp"
 	"strings"
 )
@@ -26,7 +26,7 @@ var boolAttrs = Switch{
 }
 
 // 非闭合标签
-var singleTags = []string{"img", "input", "hr", "br", "link", "meta", "source", "!doctype"}
+var singleTags = []string{"img", "input", "hr", "br", "link", "meta", "source"}
 
 func Load(html string) *Node {
 	html = strings.Replace(html, "\n\t", " ", -1)
@@ -64,7 +64,7 @@ func build(html string) *Node {
 	obj.id, obj.classes, obj.attrs = getAttrs(obj.tagName, obj.html)
 	var cp = obj.html
 
-	for  {
+	for {
 		if cp == "" {
 			break
 		}
@@ -97,16 +97,17 @@ func (u *Node) Select(selector string) []*Node {
 		N *Node
 		A []string
 	}
-	var q = linkedliststack.New()
+	var q = arraylist.New()
 	var v = Q{
 		N: u,
 		A: arr,
 	}
-	q.Push(v)
+	q.Add(v)
 
 	for q.Size() > 0 {
 		var flag = 0
-		i, _ := q.Pop()
+		i, _ := q.Get(0)
+		q.Remove(0)
 		v = i.(Q)
 		if len(v.A) == 0 {
 			res = append(res, v.N)
@@ -120,13 +121,22 @@ func (u *Node) Select(selector string) []*Node {
 					flag++
 					patt = strings.Replace(patt, "#"+id, "", 1)
 					if patt == "" && len(v.A) == 1 {
-						q.Push(Q{
+						q.Add(Q{
 							N: v.N,
 							A: make([]string, 0),
 						})
+					} else if patt != "" && len(patt) < len(arr[0]) {
+						var tmp = []string{patt}
+						for i := 1; i < len(arr); i++ {
+							tmp = append(tmp, arr[i])
+						}
+						q.Add(Q{
+							N: v.N,
+							A: tmp,
+						})
 					} else if patt == "" && len(v.A) > 1 {
 						for _, son := range v.N.children {
-							q.Push(Q{
+							q.Add(Q{
 								N: son,
 								A: v.A[1:len(v.A)],
 							})
@@ -142,13 +152,22 @@ func (u *Node) Select(selector string) []*Node {
 					flag++
 					patt = strings.Replace(patt, "."+myclass, "", 1)
 					if patt == "" && len(v.A) == 1 {
-						q.Push(Q{
+						q.Add(Q{
 							N: v.N,
 							A: make([]string, 0),
 						})
+					} else if patt != "" && len(patt) < len(arr[0]) {
+						var tmp = []string{patt}
+						for i := 1; i < len(arr); i++ {
+							tmp = append(tmp, arr[i])
+						}
+						q.Add(Q{
+							N: v.N,
+							A: tmp,
+						})
 					} else if patt == "" && len(v.A) > 1 {
 						for _, son := range v.N.children {
-							q.Push(Q{
+							q.Add(Q{
 								N: son,
 								A: v.A[1:len(v.A)],
 							})
@@ -164,13 +183,22 @@ func (u *Node) Select(selector string) []*Node {
 					flag++
 					patt = strings.Replace(patt, tagName, "", 1)
 					if patt == "" && len(v.A) == 1 {
-						q.Push(Q{
+						q.Add(Q{
 							N: v.N,
 							A: make([]string, 0),
 						})
+					} else if patt != "" && len(patt) < len(arr[0]) {
+						var tmp = []string{patt}
+						for i := 1; i < len(arr); i++ {
+							tmp = append(tmp, arr[i])
+						}
+						q.Add(Q{
+							N: v.N,
+							A: tmp,
+						})
 					} else if patt == "" && len(v.A) > 1 {
 						for _, son := range v.N.children {
-							q.Push(Q{
+							q.Add(Q{
 								N: son,
 								A: v.A[1:len(v.A)],
 							})
@@ -178,7 +206,7 @@ func (u *Node) Select(selector string) []*Node {
 					}
 				}
 			} else {
-				re, _ := regexp.Compile(`(?i:^\[.*?\])`)
+				re, _ := regexp.Compile(`(?iU:^\[.*\])`)
 				var s = re.FindString(patt)
 				var cp = s
 				s = strings.Replace(s, "[", "", 1)
@@ -187,17 +215,27 @@ func (u *Node) Select(selector string) []*Node {
 				var k = kv[0]
 				re, _ = regexp.Compile(`['"]`)
 				var val = re.ReplaceAllString(kv[1], "")
-				if v.N.attrs[k].String() == val {
+				attr, ok := v.N.attrs[k]
+				if ok && attr.String() == val {
 					flag++
 					patt = strings.Replace(patt, cp, "", 1)
 					if patt == "" && len(v.A) == 1 {
-						q.Push(Q{
+						q.Add(Q{
 							N: v.N,
 							A: make([]string, 0),
 						})
+					} else if patt != "" && len(patt) < len(arr[0]) {
+						var tmp = []string{patt}
+						for i := 1; i < len(arr); i++ {
+							tmp = append(tmp, arr[i])
+						}
+						q.Add(Q{
+							N: v.N,
+							A: tmp,
+						})
 					} else if patt == "" && len(v.A) > 1 {
 						for _, son := range v.N.children {
-							q.Push(Q{
+							q.Add(Q{
 								N: son,
 								A: v.A[1:len(v.A)],
 							})
@@ -208,7 +246,7 @@ func (u *Node) Select(selector string) []*Node {
 
 			if flag == 0 {
 				for _, son := range v.N.children {
-					q.Push(Q{
+					q.Add(Q{
 						N: son,
 						A: v.A,
 					})

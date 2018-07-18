@@ -1,8 +1,8 @@
 package parser
 
 import (
-	"testing"
 	"io/ioutil"
+	"testing"
 )
 
 func TestParserLoad(t *testing.T) {
@@ -14,11 +14,11 @@ func TestParserLoad(t *testing.T) {
 }
 
 func TestMatch(t *testing.T) {
-	bytes,_ := ioutil.ReadFile("./test/demo.html")
+	bytes, _ := ioutil.ReadFile("./test/demo.html")
 	println(&bytes)
-	nodes := Load(string(bytes)).Select("#wrapper .sr-only")
+	nodes := Load(string(bytes)).Select("a[href='/about']")
 	//nodes := Load(`<gcse:search></gcse:search>`)
-		//Select("#wrapper .sr-only")
+	//Select("#wrapper .sr-only")
 	println(&nodes)
 }
 

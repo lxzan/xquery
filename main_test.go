@@ -2,6 +2,7 @@ package parser
 
 import (
 	"testing"
+	"io/ioutil"
 )
 
 func TestParserLoad(t *testing.T) {
@@ -13,23 +14,11 @@ func TestParserLoad(t *testing.T) {
 }
 
 func TestMatch(t *testing.T) {
-	html := `
-<dl id="cloud" name="caster">
-	<dt>
-		<a href="/forums/CloudComputing">云计算</a>
-		<img src="https://baidu.com/">
-	</dt>
-
-	<dd>
-	<a href="/forums/AWS">IaaS</a>
-	<a href="/forums/CloudFoundry">Pass/SaaS</a>
-	<a href="/forums/hadoop">Cluster Calculate/Hadoop</a>
-	</dd>
-</dl>`
-
-	var tree = Load(html)
-	nodes := tree.Select("dl dt img")
-	println(nodes[0].Attr("src"))
+	bytes,_ := ioutil.ReadFile("./test/demo.html")
+	nodes := Load(string(bytes))
+	//nodes := Load(`<meta name="author" content="slene, Unknown" />`)
+		//Select("#wrapper .sr-only")
+	println(&nodes)
 }
 
 func TestWhile(t *testing.T) {

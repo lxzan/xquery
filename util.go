@@ -40,10 +40,18 @@ func getAttrs(tagName string, html string) (string, []string, Attrs) {
 	re, _ := regexp.Compile(expr)
 	var s = re.FindString(html)
 	s = strings.Replace(s, "<"+tagName, "", 1)
+	s = strings.Replace(s, "/>", "", 1)
 	s = strings.TrimSpace(strings.Replace(s, ">", "", 1))
 	re, _ = regexp.Compile(`[\s]{2,}`)
 	s = strings.TrimSpace(re.ReplaceAllString(s, " "))
-	var arr = strings.Split(s, " ")
+
+	var arr = make([]string, 0)
+	re,_ = regexp.Compile(`(?im:[a-z0-9]+=".*?")`)
+	arr = re.FindAllString(s, -1)
+	if len(arr) == 0{
+		re,_ = regexp.Compile(`(?im:[a-z0-9]+='.*?')`)
+		arr = re.FindAllString(s, -1)
+	}
 	if len(arr) == 1 && arr[0] == "" {
 		return id, classes, attrs
 	}

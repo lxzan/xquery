@@ -32,32 +32,16 @@ func Load(html string) *Node {
 	html = strings.Replace(html, "\n\t", " ", -1)
 	html = strings.Replace(html, "\n", " ", -1)
 	html = strings.TrimSpace(html)
-	for _,item := range singleTags{
+	for _, item := range singleTags {
 		tag := "</" + item + ">"
 		html = strings.Replace(html, tag, "", -1)
 	}
-
 	var obj = new(Node)
 	obj.attrs = Attrs{}
 	obj.classes = []string{}
 	re, _ := regexp.Compile(`(?i:^<!DOCTYPE html.*?>)`)
-	obj.html = strings.TrimSpace(re.ReplaceAllString(html, ""))
-	obj.tagName = getTagName(obj.html)
-	obj.id, obj.classes, obj.attrs = getAttrs(obj.tagName, obj.html)
-
-	var cp = obj.html
-	DoWhile(func() bool {
-		if cp == "" {
-			return false
-		}
-		child, err := MatchChild(cp)
-		if err == nil {
-			cp = strings.TrimSpace(strings.Replace(cp, child, "", 1))
-			obj.children = append(obj.children, Load(child))
-		}
-		return err == nil
-	})
-	return obj
+	html = strings.TrimSpace(re.ReplaceAllString(html, ""))
+	return obj.build(html)
 }
 
 type Node struct {
@@ -67,6 +51,27 @@ type Node struct {
 	id       string
 	attrs    Attrs
 	children []*Node
+}
+
+func (u *Node) build(html string) *Node {
+	u.html = html
+	u.tagName = getTagName(u.html)
+	u.id, u.classes, u.attrs = getAttrs(u.tagName, u.html)
+	var cp = u.html
+
+	for  {
+		if cp == "" {
+			break
+		}
+		child, err := MatchChild(cp)
+		if err == nil {
+			cp = strings.TrimSpace(strings.Replace(cp, child, "", 1))
+			u.children = append(u.children, u.build(child))
+		} else {
+			break
+		}
+	}
+	return u
 }
 
 func (u *Node) InnterHtml() string {

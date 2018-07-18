@@ -38,13 +38,31 @@ func Load(html string) *Node {
 		tag = strings.ToUpper("</" + item + ">")
 		html = strings.Replace(html, tag, "", -1)
 	}
-	var obj = new(Node)
-	obj.attrs = Attrs{}
-	obj.classes = []string{}
 	re, _ := regexp.Compile(`(?im:<!--.*?-->)`)
 	html = "<root>" + strings.TrimSpace(re.ReplaceAllString(html, "")) + "</root>"
-	obj.build(html)
-	return obj
+
+	//var obj = new(Node)
+	//obj.attrs = Attrs{}
+	//obj.classes = []string{}
+	//obj = build(obj, html)
+
+	//obj.html = html
+	//obj.tagName = getTagName(obj.html)
+	//obj.id, obj.classes, obj.attrs = getAttrs(obj.tagName, obj.html)
+	//var cp = obj.html
+	//for  {
+	//	if cp == "" {
+	//		break
+	//	}
+	//	child, err := MatchChild(cp)
+	//	if err == nil && child != "" {
+	//		cp = strings.TrimSpace(strings.Replace(cp, child, "", 1))
+	//		obj.children = append(obj.children, Load(child))
+	//	} else {
+	//		break
+	//	}
+	//}
+	return build(html)
 }
 
 type Node struct {
@@ -56,11 +74,15 @@ type Node struct {
 	children []*Node
 }
 
-func (u *Node) build(html string) *Node {
-	u.html = html
-	u.tagName = getTagName(u.html)
-	u.id, u.classes, u.attrs = getAttrs(u.tagName, u.html)
-	var cp = u.html
+func build(html string) *Node {
+	var obj = new(Node)
+	obj.attrs = Attrs{}
+	obj.classes = []string{}
+
+	obj.html = html
+	obj.tagName = getTagName(obj.html)
+	obj.id, obj.classes, obj.attrs = getAttrs(obj.tagName, obj.html)
+	var cp = obj.html
 
 	for  {
 		if cp == "" {
@@ -69,12 +91,12 @@ func (u *Node) build(html string) *Node {
 		child, err := MatchChild(cp)
 		if err == nil && child != "" {
 			cp = strings.TrimSpace(strings.Replace(cp, child, "", 1))
-			u.children = append(u.children, u.build(child))
+			obj.children = append(obj.children, build(child))
 		} else {
 			break
 		}
 	}
-	return u
+	return obj
 }
 
 func (u *Node) InnterHtml() string {

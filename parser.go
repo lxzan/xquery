@@ -2,6 +2,7 @@ package parser
 
 import (
 	"github.com/emirpasic/gods/lists/arraylist"
+	"github.com/kataras/iris/core/errors"
 	"regexp"
 	"strings"
 )
@@ -28,7 +29,7 @@ var boolAttrs = Switch{
 // 非闭合标签
 var singleTags = []string{"img", "input", "hr", "br", "link", "meta", "source"}
 
-func Load(html string) *Node {
+func Load(html string) (*Node, error) {
 	html = strings.Replace(html, "\n\t", " ", -1)
 	html = strings.Replace(html, "\n", " ", -1)
 	html = strings.TrimSpace(html)
@@ -42,7 +43,11 @@ func Load(html string) *Node {
 	html = re.ReplaceAllString(html, "")
 	re, _ = regexp.Compile(`(?im:<!--.*?-->)`)
 	html = strings.TrimSpace(re.ReplaceAllString(html, ""))
-	return build(html)
+
+	if valid(html) == false {
+		return nil, errors.New("html not valid")
+	}
+	return build(html), nil
 }
 
 type Node struct {
@@ -52,6 +57,11 @@ type Node struct {
 	id       string
 	attrs    Attrs
 	children []*Node
+}
+
+func valid(html string) bool {
+	re, _ := regexp.Compile(`(?m:^<.*?>$)`)
+	return re.MatchString(html)
 }
 
 func build(html string) *Node {
@@ -90,7 +100,7 @@ func (u *Node) InnterHtml() string {
 	return strings.TrimSpace(s)
 }
 
-func (u *Node) Select(selector string) []*Node {
+func (u *Node) query(selector string, limit int) []*Node {
 	var res = make([]*Node, 0)
 	var arr = strings.Split(selector, " ")
 	type Q struct {
@@ -111,10 +121,13 @@ func (u *Node) Select(selector string) []*Node {
 		v = i.(Q)
 		if len(v.A) == 0 {
 			res = append(res, v.N)
+			if len(res) == limit {
+				break
+			}
 		} else {
 			var patt = v.A[0]
 			if patt[0] == '#' {
-				re, _ := regexp.Compile("(?i:^#[0-9a-z]+)")
+				re, _ := regexp.Compile(`(?i:^#[0-9a-z\-]+)`)
 				var id = re.FindString(patt)
 				id = strings.Replace(id, "#", "", 1)
 				if v.N.id == id {
@@ -257,6 +270,21 @@ func (u *Node) Select(selector string) []*Node {
 	return res
 }
 
+func (u *Node) FindAll(selector string) *Nodes {
+	var nodes = Nodes{
+		data: u.query(selector, -1),
+	}
+	return &nodes
+}
+
+func (u *Node) Find(selector string) *Node {
+	nodes := u.query(selector, 1)
+	if len(nodes) > 0 {
+		return nodes[0]
+	}
+	return &Node{}
+}
+
 func (u *Node) Attr(key string) string {
 	return u.attrs[key].String()
 }
@@ -264,4 +292,18 @@ func (u *Node) Attr(key string) string {
 func (u *Node) Text() string {
 	re, _ := regexp.Compile("<.*?>")
 	return strings.TrimSpace(re.ReplaceAllString(u.html, ""))
+}
+
+type Nodes struct {
+	data []*Node
+}
+
+func (u *Nodes) ForEach(f func(index int, node *Node)) {
+	for i, item := range u.data {
+		f(i, item)
+	}
+}
+
+func (u *Nodes) Result() []*Node {
+	return u.data
 }

@@ -49,10 +49,10 @@ func getAttrs(tagName string, html string) (string, []string, Attrs) {
 	s = strings.TrimSpace(re.ReplaceAllString(s, " "))
 
 	var arr = make([]string, 0)
-	re,_ = regexp.Compile(`(?im:[a-z0-9]+=".*?")`)
+	re,_ = regexp.Compile(`(?imU:[a-z0-9\-]+={0,}".*")`)
 	arr = re.FindAllString(s, -1)
 	if len(arr) == 0{
-		re,_ = regexp.Compile(`(?im:[a-z0-9]+='.*?')`)
+		re,_ = regexp.Compile(`(?imU:[a-z0-9\-]+={0,}'.*')`)
 		arr = re.FindAllString(s, -1)
 	}
 	if len(arr) == 1 && arr[0] == "" {

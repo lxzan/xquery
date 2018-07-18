@@ -15,11 +15,12 @@ func TestParserLoad(t *testing.T) {
 
 func TestMatch(t *testing.T) {
 	bytes, _ := ioutil.ReadFile("./test/demo.html")
-	println(&bytes)
-	nodes := Load(string(bytes)).Select("a[href='/about']")
-	//nodes := Load(`<gcse:search></gcse:search>`)
-	//Select("#wrapper .sr-only")
-	println(&nodes)
+	node, _ := Load(string(bytes))
+	//println(node.Find("#docs-collapse-btn").InnterHtml())
+	nodes := node.FindAll("#docs-collapse-btn")
+	//.ForEach(func(index int, node *Node) {
+		println(nodes)
+	//})
 }
 
 func TestSubstr(t *testing.T) {

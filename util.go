@@ -94,12 +94,6 @@ func InnterHtml(html string) string{
 	return strings.TrimSpace(s)
 }
 
-func DoWhile(fn func() bool)  {
-	if fn() == true {
-		DoWhile(fn)
-	}
-}
-
 func Substr(s string, start, length int) string  {
 	bytes := []byte(s)
 	tmp := bytes[start:start+length]

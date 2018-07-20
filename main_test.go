@@ -1,8 +1,8 @@
 package parser
 
 import (
-	"io/ioutil"
 	"testing"
+	"io/ioutil"
 )
 
 func TestParserLoad(t *testing.T) {
@@ -14,12 +14,19 @@ func TestParserLoad(t *testing.T) {
 }
 
 func TestMatch(t *testing.T) {
+	//resp, _ := hasaki.Get("https://www.feng.com/").GetBody()
 	bytes, _ := ioutil.ReadFile("./test/demo.html")
-	node, _ := Load(string(bytes))
-	//println(node.Find("#docs-collapse-btn").InnterHtml())
-	nodes := node.FindAll("#docs-collapse-btn")
-	//.ForEach(func(index int, node *Node) {
-		println(nodes)
+	html := string(bytes)
+	html = `
+
+	<i href="https://bbs.feng.com/read-htm-tid-11790208.html">
+		<i ><img src="https://bbsimages.feng.com/data/attachment/common/41/common_371_icon.png"></i>
+		<span>【汇总】苹果教育优惠来威锋下单，三重大礼等你拿！</span>
+	</i>
+`
+	node, _ := Load(html)
+	//node.FindAll("#docs-collapse-btn").ForEach(func(index int, node *Node) {
+		println(&node)
 	//})
 }
 

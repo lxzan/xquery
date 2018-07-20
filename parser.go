@@ -68,6 +68,7 @@ func build(html string) *Node {
 	var obj = new(Node)
 	obj.attrs = Attrs{}
 	obj.classes = []string{}
+	obj.children = make([]*Node, 0)
 
 	obj.html = html
 	obj.tagName = getTagName(obj.html)

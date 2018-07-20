@@ -2,8 +2,8 @@ package parser
 
 import (
 	"errors"
-	"strings"
 	"regexp"
+	"strings"
 )
 
 // 匹配标签对
@@ -12,6 +12,8 @@ func MatchChild(html string) (string, error) {
 	var cp = childs
 	var tagName = getTagName(childs)
 	var startTag = "<" + tagName
+	var startTagLength = len(startTag)
+	empty, _ := regexp.Compile(`^[\s>]$`)
 	var endTag = "</" + tagName + ">"
 	if InArray(singleTags, strings.ToLower(tagName)) {
 		patt := Build("(?imU:<{{tagName}}.*>)", Form{"tagName": tagName})
@@ -30,7 +32,7 @@ func MatchChild(html string) (string, error) {
 		sb += "*"
 	}
 	var startIndex = strings.Index(childs, startTag)
-	if startIndex != -1 {
+	if startIndex != -1 && empty.MatchString(string(childs[startIndex+startTagLength])) {
 		a++
 		childs = strings.Replace(childs, startTag, sa, 1)
 	}
@@ -48,7 +50,7 @@ func MatchChild(html string) (string, error) {
 		}
 
 		var i = strings.Index(childs, startTag)
-		if i != -1 && i < j {
+		if i != -1 && i < j && empty.MatchString(string(childs[i+startTagLength])) {
 			a++
 			childs = strings.Replace(childs, startTag, sa, 1)
 		}

@@ -8,6 +8,9 @@ import (
 
 // 匹配标签对
 func MatchChild(html string) (string, error) {
+	if getTagName(html) == "script" {
+		return "", nil
+	}
 	var childs = InnterHtml(html)
 	var cp = childs
 	var tagName = getTagName(childs)

@@ -27,7 +27,7 @@ var boolAttrs = Switch{
 }
 
 // 非闭合标签
-var singleTags = []string{"img", "input", "hr", "br", "link", "meta", "source"}
+var singleTags = []string{"img", "input", "hr", "br", "link", "meta", "source", "path"}
 
 func Load(html string) (*Node, error) {
 	html = strings.Replace(html, "\n\t", " ", -1)
@@ -41,7 +41,7 @@ func Load(html string) (*Node, error) {
 	}
 	re, _ := regexp.Compile(`(?imU:<!doctype.*>)`)
 	html = re.ReplaceAllString(html, "")
-	re, _ = regexp.Compile(`(?im:<!--.*?-->)`)
+	re, _ = regexp.Compile(`(?imU:<!--.*-->)`)
 	html = strings.TrimSpace(re.ReplaceAllString(html, ""))
 
 	if valid(html) == false {
@@ -60,7 +60,7 @@ type Node struct {
 }
 
 func valid(html string) bool {
-	re, _ := regexp.Compile(`(?m:^<.*?>$)`)
+	re, _ := regexp.Compile(`(?m:^<.*>$)`)
 	return re.MatchString(html)
 }
 
@@ -80,6 +80,7 @@ func build(html string) *Node {
 			break
 		}
 		child, err := MatchChild(cp)
+		println(child)
 		if err == nil && child != "" {
 			cp = strings.TrimSpace(strings.Replace(cp, child, "", 1))
 			obj.children = append(obj.children, build(child))

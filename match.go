@@ -12,13 +12,16 @@ func MatchChild(html string) (string, error) {
 		return "", nil
 	}
 	var childs = InnterHtml(html)
+	if childs == ""{
+		return "", nil
+	}
 	var cp = childs
 	var tagName = getTagName(childs)
 	var startTag = "<" + tagName
 	var startTagLength = len(startTag)
 	empty, _ := regexp.Compile(`^[\s>]$`)
 	var endTag = "</" + tagName + ">"
-	if InArray(singleTags, strings.ToLower(tagName)) {
+	if InArray(singleTags, strings.ToLower(tagName)) || strings.Index(cp, endTag) == -1{
 		patt := Build("(?imU:<{{tagName}}.*>)", Form{"tagName": tagName})
 		re, _ := regexp.Compile(patt)
 		return re.FindString(html), nil

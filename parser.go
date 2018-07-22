@@ -80,7 +80,6 @@ func build(html string) *Node {
 			break
 		}
 		child, err := MatchChild(cp)
-		println(child)
 		if err == nil && child != "" {
 			cp = strings.TrimSpace(strings.Replace(cp, child, "", 1))
 			obj.children = append(obj.children, build(child))
@@ -190,7 +189,7 @@ func (u *Node) query(selector string, limit int) []*Node {
 					}
 				}
 			} else if (patt[0] >= 'a' && patt[0] <= 'z') || (patt[0] >= 'A' && patt[0] <= 'Z') {
-				re, _ := regexp.Compile("(?i:^[0-9a-z]+)")
+				re, _ := regexp.Compile(`(?i:^[0-9a-z\-]+)`)
 				var tagName = re.FindString(patt)
 				tagName = strings.Replace(tagName, ".", "", 1)
 

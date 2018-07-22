@@ -26,6 +26,8 @@ var boolAttrs = Switch{
 	"selected":  true,
 }
 
+var matchCount = 0
+
 // 非闭合标签
 var singleTags = []string{"img", "input", "hr", "br", "link", "meta", "source", "path"}
 
@@ -47,7 +49,7 @@ func Load(html string) (*Node, error) {
 	if valid(html) == false {
 		return nil, errors.New("html not valid")
 	}
-	return build(html), nil
+	return build(html)
 }
 
 type Node struct {
@@ -64,7 +66,7 @@ func valid(html string) bool {
 	return re.MatchString(html)
 }
 
-func build(html string) *Node {
+func build(html string) (*Node, error) {
 	var obj = new(Node)
 	obj.attrs = Attrs{}
 	obj.classes = []string{}
@@ -75,19 +77,38 @@ func build(html string) *Node {
 	obj.id, obj.classes, obj.attrs = getAttrs(obj.tagName, obj.html)
 	var cp = obj.html
 
+	var hasError = false
 	for {
+		matchCount++
+		if matchCount > 10000 {
+			hasError = true
+			break
+		}
 		if cp == "" {
 			break
 		}
+
 		child, err := MatchChild(cp)
 		if err == nil && child != "" {
 			cp = strings.TrimSpace(strings.Replace(cp, child, "", 1))
-			obj.children = append(obj.children, build(child))
+			n, err := build(child)
+			if err != nil {
+				hasError = true
+				break
+			}
+			obj.children = append(obj.children, n)
+		} else if err != nil {
+			hasError = true
+			break
 		} else {
 			break
 		}
 	}
-	return obj
+
+	if hasError == true {
+		return nil, errors.New("html parse error")
+	}
+	return obj, nil
 }
 
 func (u *Node) InnterHtml() string {
